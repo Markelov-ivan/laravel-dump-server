@@ -40,7 +40,7 @@ class DumpServerServiceProvider extends ServiceProvider
             'command.dumpserver',
         ]);
 
-        $host = $this->app['config']->get('debug-server.host');
+        $host = $this->app['config']->get('debug-server.host') ?? 'tcp://127.0.0.1:9912';
 
         $this->app->when(DumpServer::class)->needs('$host')->give($host);
 
